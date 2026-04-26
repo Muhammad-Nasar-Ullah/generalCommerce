@@ -7,7 +7,7 @@ const NavMenu = () => {
     return (
         <>
             <Menu as="div" className="relative inline-block focus-border-none">
-                <MenuButton className="inline-flex w-full justify-center items-center gap-x-1.5 rounded-md px-3 py-2 text-lg font-semibold text-black hover:bg-white/20">
+                <MenuButton className="inline-flex w-full justify-start items-center gap-x-1.5 rounded-md px-3 py-2 text-md font-semibold text-black hover:bg-white/20">
                     Menu
                     <ChevronDownIcon aria-hidden="true" className=" size-5 text-gray-400 transition" />
                 </MenuButton>
