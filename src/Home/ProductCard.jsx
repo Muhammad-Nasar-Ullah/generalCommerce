@@ -1,33 +1,27 @@
-import { useState } from "react"
+import React from "react"
 
 const ProductCard = ({ product, addedProducts, setAddedProducts }) => {
 
-    const [count, setCount] = useState(0);
-    const [isAdded, setIsAdded] = useState(false);
+    const cartItem = addedProducts.find((p) => p.id === product.id);
+    const isAdded = !!cartItem;
+    const count = cartItem?.quantity || 0;
 
     const handleAddToCart = () => {
-        if (isAdded) {
-            setCount(count - 1)
-            if (count === 1) {
-                setIsAdded(false);
-                setAddedProducts(addedProducts.filter((p) => p.id !== product.id));
-            }
+        if (!isAdded) {
+            setAddedProducts([...addedProducts, { ...product, quantity: 1 }]);
         } else {
-            setIsAdded(true);
-            setAddedProducts([...addedProducts, { ...product, addedId: product.id }]);
-            setCount(count + 1)
+            setAddedProducts(addedProducts.filter((p) => p.id !== product.id));
         }
     }
 
-    const handleCount = (sign) => {
-        if (sign === "-") {
-            setCount(count - 1)
-            if (count === 1) {
-                setIsAdded(false);
-                setAddedProducts(addedProducts.filter((p) => p.id !== product.id));
-            }
+    const handleQuantityChange = (change) => {
+        const newCount = count + change;
+        if (newCount <= 0) {
+            setAddedProducts(addedProducts.filter((p) => p.id !== product.id));
         } else {
-            setCount(count + 1)
+            setAddedProducts(addedProducts.map((p) =>
+                p.id === product.id ? { ...p, quantity: newCount } : p
+            ));
         }
     }
 
@@ -45,16 +39,16 @@ const ProductCard = ({ product, addedProducts, setAddedProducts }) => {
                 <h2 className='text-base text-black'>{product.description.slice(0, 80)}...</h2>
             </div>
             <div className="flex justify-center gap-2">
-                <div className="flex items-center my-5 gap-2">
-                    {isAdded ?
-                        <div className="flex items-center gap-2">
-                            <button onClick={() => handleCount("-")} className={`bg-amber-400 hover:bg-amber-500 flex items-center justify-center gap-3 text-white px-4 py-2 rounded-xl font-bold cursor-pointer transition-colors`}>-</button>
-                            <span className="text-base font-bold">{count}</span>
-                            <button onClick={() => handleCount("+")} className={`flex items-center justify-center gap-3 bg-amber-400 hover:bg-amber-500 text-white px-4 py-2 rounded-xl font-bold cursor-pointer transition-colors`}>+</button>
-                            <button onClick={handleAddToCart} className={`flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl font-bold cursor-pointer transition-colors`}>Added to Cart</button>
-                        </div> :
-                        <button onClick={handleAddToCart} className={`flex items-center justify-center gap-3 bg-amber-400 hover:bg-amber-500 text-white px-4 py-2 rounded-xl font-bold cursor-pointer transition-colors`}>Add to Cart</button>}
-                </div>
+                {isAdded && (
+                    <div className="flex gap-2 items-center">
+                        <button onClick={() => handleQuantityChange(-1)} className="bg-amber-500 text-white px-3 py-1 rounded-xl font-bold cursor-pointer transition-colors">-</button>
+                        <span className="bg-white text-black border-2 border-solid border-gray-500 px-3 py-1 rounded-xl font-bold">{count}</span>
+                        <button onClick={() => handleQuantityChange(+1)} className="bg-amber-500 text-white px-3 py-1 rounded-xl font-bold cursor-pointer transition-colors">+</button>
+                    </div>
+                )}
+                <button onClick={handleAddToCart} className={`flex items-center justify-center gap-3 ${isAdded ? 'bg-green-500 hover:bg-green-600' : 'bg-amber-500 hover:bg-amber-600'} text-white px-4 py-2 rounded-xl font-bold cursor-pointer transition-colors`}>
+                    {isAdded ? 'Added to Cart' : 'Add to Cart'}
+                </button>
             </div>
         </div>
     )

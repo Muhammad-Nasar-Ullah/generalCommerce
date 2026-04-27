@@ -3,7 +3,7 @@ import HeroSection from './HeroSection'
 import ProductSection from './ProductSection'
 import ProductCard from './ProductCard'
 
-const Home = ({ products, setAddedProducts, search, category, setCategory }) => {
+const Home = ({ products, addedProducts, setAddedProducts, search, category, setCategory }) => {
     return (
         <section>
             <HeroSection />
@@ -16,7 +16,7 @@ const Home = ({ products, setAddedProducts, search, category, setCategory }) => 
                         return product.category.toLowerCase() === category.toLowerCase() && (product.title.toLowerCase().includes(search.toLowerCase()) || product.description.toLowerCase().includes(search.toLowerCase()) || product.price.toString().includes(search))
                     }
                 }).map((product) => (
-                    <ProductCard key={product.id} product={product} price={product.price} setAddedProducts={setAddedProducts} />
+                    <ProductCard key={product.id} product={product} addedProducts={addedProducts} setAddedProducts={setAddedProducts} />
                 ))}
             </div>
         </section>
