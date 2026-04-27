@@ -3,16 +3,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar/Navbar"
 import Home from "./Home/Home"
-import Cart from "./Cart/Cart"
+
 
 
 function App() {
 
   const [products, setProducts] = useState([])
   const [addedProducts, setAddedProducts] = useState([])
+  const [showCart, setShowCart] = useState(false);
+
 
   useEffect(() => {
-    fetch(`https://api.escuelajs.co/api/v1/products/`)
+    fetch(`https://fakestoreapi.com/products`)
       .then(res => res.json())
       .then(data => setProducts(data.slice(0, 15)))
   }, [])
@@ -22,10 +24,9 @@ function App() {
     <>
       <main className="w-[90%] mx-auto">
         <BrowserRouter>
-          <Navbar addedProducts={addedProducts} />
+          <Navbar addedProducts={addedProducts} setAddedProducts={setAddedProducts} showCart={showCart} setShowCart={setShowCart} />
           <Routes>
             <Route path="/" element={<Home products={products} addedProducts={addedProducts} setAddedProducts={setAddedProducts} />} />
-            <Route path="/cart" element={<Cart setAddedProducts={setAddedProducts} addedProducts={addedProducts} />} />
 
           </Routes>
         </BrowserRouter>

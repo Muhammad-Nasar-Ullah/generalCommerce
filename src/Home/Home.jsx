@@ -7,10 +7,10 @@ const Home = ({ products, addedProducts, setAddedProducts }) => {
     return (
         <section>
             <HeroSection />
-            {/* <ProductSection /> */}
-            <div className='grid grid-cols-5 gap-5 mt-10'>
+            <ProductSection />
+            <div className='grid grid-cols-5 gap-5 my-10'>
                 {products.map((product) => (
-                    <ProductCard product={product} addedProducts={addedProducts} setAddedProducts={setAddedProducts} />
+                    <ProductCard key={product.id} product={product} price={product.price} addedProducts={addedProducts} setAddedProducts={setAddedProducts} />
                 ))}
             </div>
         </section>
