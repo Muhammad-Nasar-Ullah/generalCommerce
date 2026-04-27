@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const ProductCard = ({ product, addedProducts, setAddedProducts }) => {
 
     const [count, setCount] = useState(0);
-    const [disabled, setDisabled] = useState(false);
     const [isAdded, setIsAdded] = useState(false);
 
     const handleAddToCart = () => {
