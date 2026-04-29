@@ -1,12 +1,25 @@
 import React from 'react'
 
-const Cart = ({ cartIcon, addedProducts, setAddedProducts, showCart, setShowCart }) => {
+const Cart = ({ products, cartIcon, addedProducts, setAddedProducts, showCart, setShowCart }) => {
 
     const handleCancel = (id) => {
         setAddedProducts(addedProducts.filter(product => product.id !== id))
     }
 
+
     const totalPrice = addedProducts.reduce((sum, p) => sum + p.price * (p.quantity || 1), 0).toFixed(2)
+
+    const handleQuantityChange = (products, change) => {
+        const newCount = products.quantity + change;
+        if (newCount <= 0) {
+            setAddedProducts(addedProducts.filter((p) => p.id !== products.id));
+        } else {
+            setAddedProducts(addedProducts.map((p) =>
+                p.id === products.id ? { ...p, quantity: newCount } : p
+            ));
+        }
+    }
+
 
     return (
         <>
@@ -54,13 +67,19 @@ const Cart = ({ cartIcon, addedProducts, setAddedProducts, showCart, setShowCart
                     ) : (
                         addedProducts.map((product, index) => (
                             <div key={product.id || index} className="flex items-center gap-4 p-3 rounded-xl border border-gray-200 hover:border-amber-400 transition-colors">
-                                <img className="w-16 h-16 object-contain rounded-lg bg-gray-50 p-1" src={product.image} alt={product.title} />
+                                <img className="w-16 h-16 object-contain rounded-lg bg-gray-50 p-1" src={product.images[0]} alt={product.title} />
                                 <div className="flex-1 min-w-0">
                                     <h3 className="font-semibold text-sm text-gray-800 truncate">{product.title.slice(0, 35)}</h3>
                                     <p className="text-xs text-gray-400 mt-0.5">{product.category}</p>
                                     <div className="flex items-center justify-between mt-2">
                                         <span className="text-amber-600 font-bold text-sm">${product.price}</span>
-                                        <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">Qty: {product.quantity || 1}</span>
+                                        <div className='flex justify-center items-center gap-4'>
+                                            <div className="flex justify-between w-20 items-center px-2 py-1 border-1 border-solid border-gray-300 rounded-xl gap-3">
+                                                <button onClick={() => handleQuantityChange(product, -1)} className="flex justify-center items-center text-black cursor-pointer"><p className='text-lg font-semibold'>-</p></button>
+                                                <p className="text-black font-bold">{product.quantity}</p>
+                                                <button onClick={() => handleQuantityChange(product, +1)} className="flex justify-center items-center text-black cursor-pointer"><p className='text-lg font-semibold'>+</p></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <button

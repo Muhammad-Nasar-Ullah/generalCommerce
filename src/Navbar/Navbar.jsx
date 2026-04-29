@@ -5,10 +5,11 @@ import NavSearch from './NavSearch'
 import cart from '../assets/cart.png'
 import user from '../assets/user.png'
 import Cart from './Cart'
+import filledHeart from '../assets/filledHeart.png'
 
-const Navbar = ({ addedProducts, setAddedProducts, showCart, setShowCart, search, setSearch }) => {
+const Navbar = ({ products, addedProducts, setAddedProducts, likedProducts, showCart, setShowCart, search, setSearch }) => {
     return (
-        <nav className='flex items-center justify-between h-20 bg-gray-200 my-2 py-2 px-10 rounded-xl'>
+        <nav className='flex items-center fixed top-0 z-40 w-[90%] h-[85px] mx-auto justify-between bg-gray-200 py-2 px-10 rounded-b-xl'>
             <div className='flex justify-center items-center gap-10'>
                 <NavMenu />
                 <Link to="/">
@@ -21,11 +22,19 @@ const Navbar = ({ addedProducts, setAddedProducts, showCart, setShowCart, search
             <NavSearch search={search} setSearch={setSearch} />
 
             <div>
-                <ul className='flex justify-center itmes-center gap-5'>
-                    <li className='bg-white rounded-full p-4 relative cursor-pointer' >
-                        <Cart cartIcon={cart} addedProducts={addedProducts} setAddedProducts={setAddedProducts} showCart={showCart} setShowCart={setShowCart} />
+                <ul className='flex justify-center itmes-center bg-white rounded-full py-2 px-5  gap-5'>
+                    <li className='relative cursor-pointer text-xl flex items-center justify-center'>
+                        <Link to='/liked'><img src={filledHeart} alt="liked" className='w-6 h-6' /></Link>
+                        {likedProducts.length > 0 && (
+                            <span className='absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center'>
+                                {likedProducts.length}
+                            </span>
+                        )}
                     </li>
-                    <li className='bg-white rounded-full p-4'><Link to='/user'><img className='w-5 h-5' src={user} alt="user" /></Link></li>
+                    <li className='relative flex items-center justify-center cursor-pointer' >
+                        <Cart cartIcon={cart} products={products} addedProducts={addedProducts} setAddedProducts={setAddedProducts} showCart={showCart} setShowCart={setShowCart} />
+                    </li>
+                    <li className='cursor-pointer flex items-center justify-center'><Link to='/user'><img className='w-5 h-5' src={user} alt="user" /></Link></li>
                 </ul>
             </div>
         </nav>

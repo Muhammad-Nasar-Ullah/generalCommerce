@@ -4,8 +4,6 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 const ProductSection = ({ products, setAddedProducts, category, setCategory }) => {
 
-    const [showAllCategories, setShowAllCategories] = useState(false)
-
     const productCategories = products.map((product) => product.category)
     const distinctCategories = [...new Set(['All Categories', ...productCategories])]
 
