@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProductsectionCard = ({ categoryName, setCategory }) => {
+const ProductSectionCard = ({ categoryName, setCategory }) => {
 
     const categoryHandler = () => {
         setCategory(categoryName)
@@ -14,4 +14,4 @@ const ProductsectionCard = ({ categoryName, setCategory }) => {
     )
 }
 
-export default ProductsectionCard
+export default ProductSectionCard

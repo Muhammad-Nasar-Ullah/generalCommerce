@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ProductsectionCard from './ProductsectionCard'
+import ProductSectionCard from './ProductSectionCard'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 const ProductSection = ({ products, setAddedProducts, category, setCategory }) => {
@@ -31,7 +31,7 @@ const ProductSection = ({ products, setAddedProducts, category, setCategory }) =
                 <div className="absolute z-10">
                     <div className="p-4 flex flex-col justify-center items-center gap-3 w-56 bg-gray-200 rounded-xl">
                         {distinctCategories.map((category) => (
-                            <ProductsectionCard key={category} categoryName={category} setCategory={setCategory} />
+                            <ProductSectionCard key={category} categoryName={category} setCategory={setCategory} />
                         ))}
                     </div>
                 </div>
