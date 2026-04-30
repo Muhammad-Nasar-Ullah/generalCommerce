@@ -61,7 +61,7 @@ const ProductCard = ({ product, addedProducts, setAddedProducts, likedProducts, 
                 <p className='text-sm text-black'>{product.category}</p>
             </div>
             <div className='absolute top-2 right-2 bg-gray-200 rounded-xl px-2 py-1'>
-                <p className="text-amber-600 font-bold text-sm hover:underline transition-all cursor-pointer">{product.discountPercentage}%</p>
+                <p className="text-amber-600 font-bold text-sm">Discount: {product.discountPercentage}%</p>
             </div>
         </div>
     )

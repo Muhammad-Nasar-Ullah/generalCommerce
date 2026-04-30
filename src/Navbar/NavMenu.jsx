@@ -12,7 +12,7 @@ const NavMenu = () => {
             onMouseLeave={() => setIsOpen(false)}
         >
             {/* Trigger button */}
-            <button className="inline-flex w-full justify-start items-center gap-x-1.5 rounded-md px-3 py-2 text-md font-semibold text-black hover:bg-white/20">
+            <button className="inline-flex w-full justify-start items-center gap-x-1.5 rounded-md px-3 py-2 text-md font-semibold text-white hover:bg-white/20">
                 Menu
                 <ChevronDownIcon
                     aria-hidden="true"

@@ -8,7 +8,7 @@ const Home = ({ products, setProducts, addedProducts, setAddedProducts, likedPro
         <section className='mt-30'>
             <HeroSection />
             <ProductSection products={products} setProducts={setProducts} setAddedProducts={setAddedProducts} category={category} setCategory={setCategory} />
-            <div className='grid grid-cols-5 gap-5 my-10'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 my-10'>
                 {products.filter((product) => {
                     if (category === 'All Categories') {
                         return product.title.toLowerCase().includes(search.toLowerCase()) || product.description.toLowerCase().includes(search.toLowerCase()) || product.category.toLowerCase().includes(search.toLowerCase()) || product.price.toString().includes(search)
