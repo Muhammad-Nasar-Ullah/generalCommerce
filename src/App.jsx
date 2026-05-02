@@ -6,6 +6,7 @@ import Footer from "./Footer/Footer"
 import Home from "./Home/Home"
 import LikedProducts from "./Navbar/LikedProducts"
 import AboutUs from "./AboutUs/AboutUs"
+import Contact from "./Contact/Contact"
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Route path="/" element={<Home products={products} setProducts={setProducts} addedProducts={addedProducts} setAddedProducts={setAddedProducts} likedProducts={likedProducts} setLikedProducts={setLikedProducts} search={search} category={category} setCategory={setCategory} />} />
             <Route path="/liked" element={<LikedProducts likedProducts={likedProducts} setLikedProducts={setLikedProducts} addedProducts={addedProducts} setAddedProducts={setAddedProducts} />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />

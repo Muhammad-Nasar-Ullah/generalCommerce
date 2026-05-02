@@ -112,7 +112,7 @@ const ProductCard = ({ product, addedProducts, setAddedProducts, likedProducts, 
 
                         <div className="w-full md:w-1/2 bg-gray-50 p-8 flex flex-col gap-6 items-center justify-center border-b md:border-b-0 md:border-r border-gray-100">
                             <div className="relative w-full aspect-square flex justify-center items-center bg-white rounded-3xl shadow-inner p-10 overflow-hidden">
-                                <img onClick={handleProductImageClick}
+                                <img onClick={currentImage}
                                     className="max-w-full max-h-full object-contain hover:scale-110 transition-transform duration-700"
                                     src={product.images[currentImage]}
                                     alt={product.title}

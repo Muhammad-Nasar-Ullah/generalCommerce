@@ -43,10 +43,10 @@ const Footer = () => {
                     <h3 className="text-lg font-bold text-amber-500 mb-6">Get in Touch</h3>
                     <ul className="space-y-4 text-gray-400">
                         <li className="flex items-center gap-3">
-                            <span>📧</span> support@ecommerce.com
+                            <span>📧</span> nasarbutt20@gmail.com
                         </li>
                         <li className="flex items-center gap-3">
-                            <span>📞</span> +1 (555) 123-4567
+                            <span>📞</span> +92 340 047-6825
                         </li>
                         <li className="flex items-center gap-3">
                             <span>📍</span> 123 Commerce St, Digital City
