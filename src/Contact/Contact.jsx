@@ -106,7 +106,7 @@ const Contact = () => {
     return (
         <div className="container mx-auto p-4 sm:p-6 lg:p-10 mt-24">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-8">Contact Us</h1>
-            <div className="flex sm:flex-col lg:flex-row justify-between items-center gap-8 sm:gap-10 lg:gap-14">
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-8 sm:gap-10 lg:gap-14">
                 {/* Contact Information */}
                 <div className="space-y-6 sm:space-y-8">
                     <div>
