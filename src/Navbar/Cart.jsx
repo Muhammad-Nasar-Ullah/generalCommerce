@@ -44,7 +44,7 @@ const Cart = ({ products, cartIcon, addedProducts, setAddedProducts, showCart, s
             />
 
             {/* Slide-in Drawer */}
-            <div className={`fixed top-0 right-0 h-full w-[600px] bg-white z-50 shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${showCart ? 'translate-x-0' : 'translate-x-full'}`}>
+            <div className={`fixed top-0 right-0 h-full w-[400px] sm:w-[500px] lg:w-[600px] xl:w-[700px] bg-white z-50 shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${showCart ? 'translate-x-0' : 'translate-x-full'}`}>
 
                 {/* Drawer Header */}
                 <div className="flex items-center justify-between px-6 py-5 border-b border-gray-200">

@@ -9,17 +9,20 @@ import filledHeart from '../assets/filledHeart.png'
 
 const Navbar = ({ products, addedProducts, setAddedProducts, likedProducts, showCart, setShowCart, search, setSearch }) => {
     return (
-        <nav className='flex items-center fixed top-0 z-40 w-full h-[85px] justify-between bg-gray-800 py-2 px-10 rounded-b-xl'>
-            <div className='flex justify-center items-center gap-10'>
-                <NavMenu />
+        <nav className='flex items-center fixed top-0 z-40 w-full h-[85px] justify-between bg-gray-800 gap-5 sm:gap-3 py-2 px-2 sm:px-10 lg:px-20 rounded-b-xl '>
+            <div className='flex justify-center items-center gap-1'>
+                <NavMenu search={search} setSearch={setSearch} />
                 <Link to="/">
                     <div className='flex justify-center items-end'>
-                        <p className='text-4xl font-bold text-amber-600'>E</p>
-                        <p className='text-2xl font-bold text-white'>COMMERCE</p>
+                        <p className='text-3xl sm:text-4xl lg:text-5xl font-bold text-amber-600'>E</p>
+                        <p className='text-2xl sm:text-2xl lg:text-3xl font-bold text-white'>COMMERCE</p>
                     </div>
                 </Link>
             </div>
-            <NavSearch search={search} setSearch={setSearch} />
+
+            <div className='md:hidden hidden lg:flex'>
+                <NavSearch search={search} setSearch={setSearch} />
+            </div>
 
             <div>
                 <ul className='flex justify-center itmes-center bg-white rounded-full py-2 px-5  gap-5'>

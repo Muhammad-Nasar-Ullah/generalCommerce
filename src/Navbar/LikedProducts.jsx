@@ -17,7 +17,7 @@ const LikedProducts = ({ likeIcon, likedProducts, setLikedProducts, addedProduct
                     <img src={likeIcon} alt="" />
                 </div>
             ) : (
-                <div className='grid grid-cols-5 gap-5 my-10'>
+                <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 my-10'>
                     {likedProducts.map((product) => (
                         <ProductCard
                             key={product.id}
