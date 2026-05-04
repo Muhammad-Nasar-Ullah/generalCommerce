@@ -7,6 +7,7 @@ import Home from "./Home/Home"
 import LikedProducts from "./Navbar/LikedProducts"
 import AboutUs from "./AboutUs/AboutUs"
 import Contact from "./Contact/Contact"
+import Checkout from "./Checkout/Checkout"
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/liked" element={<LikedProducts likedProducts={likedProducts} setLikedProducts={setLikedProducts} addedProducts={addedProducts} setAddedProducts={setAddedProducts} />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/checkout" element={<Checkout addedProducts={addedProducts} setAddedProducts={setAddedProducts} />} />
           </Routes>
         </main>
         <Footer />

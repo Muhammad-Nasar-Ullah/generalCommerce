@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = ({ products, cartIcon, addedProducts, setAddedProducts, showCart, setShowCart }) => {
+    const navigate = useNavigate();
 
     const handleCancel = (id) => {
         setAddedProducts(addedProducts.filter(product => product.id !== id))
@@ -100,7 +102,13 @@ const Cart = ({ products, cartIcon, addedProducts, setAddedProducts, showCart, s
                             <span>Total</span>
                             <span className="text-amber-600">${totalPrice}</span>
                         </div>
-                        <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-xl transition-colors cursor-pointer">
+                        <button 
+                            onClick={() => {
+                                setShowCart(false);
+                                navigate('/checkout');
+                            }}
+                            className="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-xl transition-colors cursor-pointer"
+                        >
                             Checkout
                         </button>
                         <button
