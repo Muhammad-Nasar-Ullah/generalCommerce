@@ -7,7 +7,7 @@ const LikedProducts = ({ likeIcon, likedProducts, setLikedProducts, addedProduct
     return (
         <section className='mt-30 h-full'>
             <div className='flex justify-between items-center mb-10'>
-                <h1 className='text-4xl text-amber-500 font-bold flex items-center gap-5'>Wishlist <img className='w-[40px] h-[40px]' src={filledHeart} alt="heart" /></h1>
+                <h1 className='text-4xl text-amber-500 font-bold flex items-center gap-5'>Wishlist</h1>
                 <Link to="/" className='text-amber-600 hover:underline'>Back to Home</Link>
             </div>
 
